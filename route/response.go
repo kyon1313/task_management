@@ -3,16 +3,17 @@ package route
 import "task_management/model"
 
 type UserSerializer struct {
-	ID        uint   `json:"id"`
 	Firstname string `json:"firstname"`
 	Lastname  string `json:"lastname"`
+	Email     string `json:"email"`
 }
 
 func CreateUserSerializer(user model.User) UserSerializer {
 	return UserSerializer{
-		ID:        user.ID,
+
 		Firstname: user.FirstName,
 		Lastname:  user.Lastname,
+		Email:     user.Email,
 	}
 }
 

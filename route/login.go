@@ -35,8 +35,9 @@ func Log(c *fiber.Ctx) error {
 			})
 		}
 		fmt.Print("password match", match)
+		response := CreateUserSerializer(user)
 		return c.JSON(&fiber.Map{
-			"Welcome":       user.FirstName,
+			"Welcome":       response,
 			"Login success": true,
 		})
 	}
