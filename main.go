@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 	"task_management/database"
 	"task_management/route"
 
@@ -47,5 +48,7 @@ func main() {
 	database.Migration()
 	app := fiber.New()
 	Routes(app)
-	log.Fatal(app.Listen(":3000"))
+
+	port := os.Getenv("PORT")
+	log.Fatal(app.Listen(":" + port))
 }

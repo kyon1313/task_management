@@ -1,8 +1,7 @@
 package model
 
 type Workspace struct {
-	ID         uint       `json:"id" gorm:"primaryKey"`
-	
+	ID         uint       `json:"id" gorm:"primaryKey"`	
 	UserID     int        `json:"user_id"`
 	User       User       `gorm:"foreignKey:UserID"`
 	Role       int        `json:"pref_id"`
