@@ -2,7 +2,7 @@ package route
 
 import (
 	"fmt"
-	"regexp"
+
 	"task_management/database"
 	"task_management/model"
 	"task_management/util"
@@ -16,22 +16,10 @@ func AddUser(c *fiber.Ctx) error {
 	new_user := new(model.User)
 	util.BodyParser(c, new_user)
 	//email does not exist
-	regEmail := regexp.MustCompile("[a=zA-Z0-9_]+@[yahoogmail]+[.][com]{3}")
-	err := regEmail.MatchString(new_user.Email)
-	database.DB.Find(&user, "username=?", new_user.Username)
-	database.DB.Find(&user, "email=?", new_user.Email)
 
-	if !err {
-		return c.JSON(&fiber.Map{
-			"Error":   "Invalid Format",
-			"Success": false,
-		})
-	} else if user.Email == new_user.Email {
-		return c.JSON(&fiber.Map{
-			"Message": "Email Already Exist!",
-			"Success": false,
-		})
-	} else if user.Username == new_user.Username {
+	database.DB.Find(&user, "username=?", new_user.Username)
+
+	if user.Username == new_user.Username {
 		return c.JSON(&fiber.Map{
 			"message": "Username already exist",
 			"error":   "Registration Failed",

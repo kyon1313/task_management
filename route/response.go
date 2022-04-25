@@ -5,7 +5,7 @@ import "task_management/model"
 type UserSerializer struct {
 	Firstname string `json:"firstname"`
 	Lastname  string `json:"lastname"`
-	Email     string `json:"email"`
+	
 }
 
 func CreateUserSerializer(user model.User) UserSerializer {
@@ -13,7 +13,7 @@ func CreateUserSerializer(user model.User) UserSerializer {
 
 		Firstname: user.FirstName,
 		Lastname:  user.Lastname,
-		Email:     user.Email,
+	
 	}
 }
 
